@@ -323,14 +323,14 @@ a {
 
     &__card1 {
         background-color: #fff;
-        border-radius: 25px 25px 0px 25px;
+        border-radius: 25px 25px 25px 25px;
         display: flex;
         justify-content: space-between;
         margin-bottom: 30px;
         margin-top: 50px;
 
         &_img {
-            border-radius: 25px 25px 0px 25px;
+            border-radius: 0px 25px 25px 0px;
         }
 
         &_textWrap {
