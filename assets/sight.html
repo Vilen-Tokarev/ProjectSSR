@@ -84,246 +84,63 @@
             <div class="results-container" id="resultsContainer"></div>
             <ul id="userList"></ul>
             <div class="pag">
-                <button id="prevPage">Предыдущая страница</button>
-                <span id="num">1</span>
-                <button id="nextPage">Следующая страница</button>
+                <button class="pagination__button" id="prevPage">Предыдущая страница</button>
+                <span class="pagination__page-number" id="num">1</span>
+                <button class="pagination__button" id="nextPage">Следующая страница</button>
             </div>
             <script src="./js/sight.js"></script>
         </div>
+    </section>
+    <section id="footer" class="footer">
+        <div class="container">
+            <img src="./img/pngtree-sunset-summer-beach-vector-png-image_7104038 1.png" alt="img" class="footer__logo">
+            <div class="footer__wrap">
 
+                <ul class="footer__wrap_firsCollum">
+                    <li class="footer__wrap_firstCollum_title">
+                        ПУТЕВОДИТЕЛЬ ПО ГОРОДУ СУДАК
+                    </li>
+                    <li class="footer__wrap_firstCollum_text">
+                        Путеводитель предназначен для быстрого понимания места и удобного изучения различных городов
+                    </li>
+                </ul>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        <!-- <div class="container">
-            <p class="main__title">
-                достопримечательности
-            </p>
-            <div id="mainCard" data-category="mountains" class="main__card1">
-                <img id="card1" src="./img-sight/pic2.png" alt="img" class="main__card1_img">
-                <div class="main__card1_textWrap">
-                    <p class="main__card1_textWrap_title">
-                        Гора Сокол
-                    </p>
-                    <p class="main__card1_textWrap_text">
-                        На самом деле она является древнейшим в Европе коралловым рифом высотой 473 м, образованным
-                        130–150 миллионов лет назад. Внешне гора напоминает сложившего крылья сокола, потому так и
-                        называется — Куш-Кая (с татарского: «птичья скала»). На одном из её склонов можно найти источник
-                        с целебной водой, а у подножия — руины древнего городища с монастырём. Важно помнить, что гора
-                        никак не оборудована для организованных туристических прогулок: лучше подниматься на неё не
-                        самостоятельно, а в сопровождении гида-инструктора.09:45
-                    </p>
-                </div>
-            </div>
-
-            <div id="mainCard" data-category="mountains" class="main__card2">
-                <img id="card2" src="./img-sight/pic1.png" alt="img" class="main__card2_img">
-                <div class="main__card2_textWrap">
-                    <p class="main__card2_textWrap_title">
-                        Генуэзская крепость в Судаке
-                    </p>
-                    <p class="main__card2_textWrap_text">
-                        одно из самых значимых исторических сооружений на территории Крыма. Она расположена на мысе,
-                        выдающемся в Черное море, в непосредственной близости от города Судака. Строительство крепости
-                        началось в XIV веке генуэзскими колонистами и завершилось в XV веке. Это великолепное
-                        архитектурное сооружение служило оборонной крепостью Генуэзской республики в период её
-                        владычества на Крымском полуострове.
-                    </p>
-                </div>
-            </div>
-
-            <div id="mainCard" data-category="mountains" class="main__card1">
-                <img id="card3" src="./img-sight/pic5.png" alt="img" class="main__card1_img">
-                <div class="main__card1_textWrap">
-                    <p class="main__card1_textWrap_title">
-                        Мыс Меганом
-                    </p>
-                    <p class="main__card1_textWrap_text">
-                        Отличное место для дикого отдыха с немноголюдными пляжами и кристально чистой водой. Погода
-                        здесь в летний сезон очень жаркая и засушливая, осадков практически не бывает. На мысе можно
-                        увидеть старый маяк 1895 года постройки и сложенный из камней индуистский алтарь.    Место
-                        особенно ценится дайверами: в море возле Меганома получится найти глубокие гроты, затонувшие
-                        суда и даже подводный «музей» якорей. А ещё локация овеяна всяческими легендами про НЛО и прочие
-                        мистические вещи.
-                    </p>
-                </div>
-            </div>
-
-
-
-            <div id="mainCard" data-category="trails" class="main__card4">
-                <img id="card4" src="./img-sight/pic4.png" alt="img" class="main__card4_img">
-                <div class="main__card4_textWrap">
-                    <p class="main__card4_textWrap_title">
-                        Тропа Голицына
-                    </p>
-                    <p class="main__card4_textWrap_text">
-                        Пятикилометровая прогулочная дорога рядом с посёлком Новый Свет, которая проходит по горной
-                        местности и побережью Зелёной и Синей бухт. Тропу ещё в 1912 году приказал проложить князь
-                        Голицын — специально к приезду императора Николая II. По пути путешественники смогут
-                        полюбоваться крымскими пейзажами и посетить вырубленный вручную грот с винным погребом. Также
-                        стоит побывать на одной из смотровых площадок образованного природой скального амфитеатра:
-                        отсюда открываются отличные виды на Зелёную бухту и окрестности.
-                    </p>
-                </div>
-            </div>
-            <div id="mainCard" data-category="trails" class="main__card1">
-                <img id="card5" src="./img-sight/pic7.png" alt="img" class="main__card1_img">
-                <div class="main__card1_textWrap">
-                    <p class="main__card1_textWrap_title">
-                        Грот Шаляпина
-                    </p>
-                    <p class="main__card1_textWrap_text">
-                        — это место, благодаря которому родилось название Нового Света. Когда-то князь Голицын принимал
-                        в гостях императорскую семью. Во время дегустации вин и шампанского в гроте Николай II сказал,
-                        что здесь ему все видится в новом свете. Близлежащий поселок Парадиз спешно был переименован в
-                        Новый Свет. Сам грот называют по-разному. Нам встречались названия грот Шаляпина, грот Голицына,
-                        Эстрадный грот и некоторые другие. Расположен грот на тропе Голицына, практически в самом начале
-                        маршрута.
-
-                    </p>
-                </div>
-            </div>
-            <div id="mainCard" data-category="trails" class="main__card4">
-                <img id="card6" src="./img-sight/pic8.png" alt="img" class="main__card4_img">
-                <div class="main__card4_textWrap">
-                    <p class="main__card4_textWrap_title">
-                        Грот Эолова Арфа
-                    </p>
-                    <p class="main__card4_textWrap_text">
-                        Необычное природное образование на склоне горы Алчак. Эолова Арфа представляет собой сквозной
-                        тоннель в скале, полностью проделанный ветром миллионы лет назад. С тех пор сквозняки в гроте
-                        создают различные звуки: от тихого свиста до подобия полноценной мелодии. Своё название
-                        достопримечательность получила в честь древнегреческого полубога Эола, который умел повелевать
-                        ветрами.
-                    </p>
-                </div>
-            </div>
-
-            <div id="mainCard" data-category="museums" class="main__card3">
-                <img id="card7" src="./img-sight/pic3.png" alt="img" class="main__card3_img">
-                <div class="main__card3_textWrap">
-                    <p class="main__card3_textWrap_title">
-                        Музей виноградарства и виноделия имени князя Л. С. Голицына
-                    </p>
-                    <p class="main__card3_textWrap_text">
-                        Расположен в посёлке Новый Свет в 8,5 км от центра Судака. Это ещё одна значимая для крымского
-                        виноделия локация — бывшая усадьба Голицына, построенная в XIX веке. Здесь княжеская семья
-                        прожила в общей сложности 35 лет. А сейчас в доме расположена экспозиция с личными вещами Льва
-                        Голицына, старыми механизмами с винодельческих заводов и другими историческими артефактами.
-                        Дегустации, конечно, здесь тоже проводятся.
-                    </p>
-                </div>
-            </div>
-            <div id="mainCard" data-category="museums" class="main__card4">
-                <img id="card8" src="./img-sight/pic6.png" alt="img" class="main__card4_img">
-                <div class="main__card4_textWrap">
-                    <p class="main__card4_textWrap_title">
-                        Особняк Функа
-                    </p>
-                    <p class="main__card4_textWrap_text">
-                        Уникальный памятник архитектуры был возведен в начале ХХ столетия.Особняк функа, представлял
-                        собой двухэтажное здание с мансардой, расположенное в наиболее живописном и удобном месте
-                        Судакской долины, практически под стенами Судакской крепости. Выполнен в традиционном немецком
-                        романтическом стиле, с арочными окнами и каменным декором. Характерной чертой является наличие
-                        открытых террас и широкой трехмаршевой наружной лестницы, ведущей на террасу.
-                    </p>
-                </div>
-            </div>
-            <div id="mainCard" data-category="museums" class="main__card3">
-                <img id="card9" src="./img-sight/pic9.png" alt="img" class="main__card3_img">
-                <div class="main__card3_textWrap">
-                    <p class="main__card3_textWrap_title">
-                        Винзавод «Солнечная Долина»
-                    </p>
-                    <p class="main__card3_textWrap_text">
-                        Он находится в селе Миндальное под Судаком и является одним из старейших предприятий во всём
-                        Крыму. Первые погреба были открыты здесь в 1888 году князем Львом Голицыным, который считается
-                        основоположником всего российского виноделия. На заводе получится отправиться на экскурсию по
-                        подвалам «Архадерессе», увидеть памятный знак в честь 125-летия основания предприятия, а также
-                        посетить продегустировать местные напитки под руководством профессионального сомелье.
-                    </p>
-                </div>
+                <ul class="footer__wrap_collum">
+                    <li class="footer__wrap_collum_title">
+                        <a href="./index.html" class="footer__wrap_collum_link">Главная</a>
+                    </li>
+                    <li class="footer__wrap_collum_text">
+                        <a href="./index.html#map" class="footer__wrap_collum_link">Карта</a>
+                    </li>
+                    <li class="footer__wrap_collum_text">
+                        <a href="./index.html#about" class="footer__wrap_collum_link">Описание</a>
+                    </li>
+                </ul>
+                <ul class="footer__wrap_collum">
+                    <li class="footer__wrap_collum_title">
+                        <a href="./index.html" class="footer__wrap_collum_link">Достопримечательности</a>
+                    </li>
+                    <li class="footer__wrap_collum_text">
+                        <a href="./sight.html#searchInput" class="footer__wrap_collum_link">Поиск</a>
+                    </li>
+                    <li class="footer__wrap_collum_text">
+                        <a href="./sight.html#footer" class="footer__wrap_collum_link">Контакты</a>
+                    </li>
+                </ul>
+                <ul class="footer__wrap_collum">
+                    <li class="footer__wrap_collum_title">
+                        <a href="./contact.html" class="footer__wrap_collum_link">Контакты</a>
+                    </li>
+                    <li class="footer__wrap_collum_text">
+                        <a href="./contact.html" class="footer__wrap_collum_link">FAQ</a>
+                    </li>
+                    <li class="footer__wrap_collum_text">
+                        <a href="./contact.html" class="footer__wrap_collum_link">Связаться с нами</a>
+                    </li>
+                </ul>
             </div>
         </div>
-        <div class="pagination">
-            <button class="pagination__button" id="prev-page">Предыдущая</button>
-            <span class="pagination__page-number" id="page-number">1</span>
-            <button class="pagination__button" id="next-page">Следующая</button>
-        </div>
-        <script src="./js/sight.js"></script>
-    </section> -->
-        <section id="footer" class="footer">
-            <div class="container">
-                <img src="./img/pngtree-sunset-summer-beach-vector-png-image_7104038 1.png" alt="img"
-                    class="footer__logo">
-                <div class="footer__wrap">
-
-                    <ul class="footer__wrap_firsCollum">
-                        <li class="footer__wrap_firstCollum_title">
-                            ПУТЕВОДИТЕЛЬ ПО ГОРОДУ СУДАК
-                        </li>
-                        <li class="footer__wrap_firstCollum_text">
-                            Путеводитель предназначен для быстрого понимания места и удобного изучения различных городов
-                        </li>
-                    </ul>
-
-                    <ul class="footer__wrap_collum">
-                        <li class="footer__wrap_collum_title">
-                            <a href="./index.html" class="footer__wrap_collum_link">Главная</a>
-                        </li>
-                        <li class="footer__wrap_collum_text">
-                            <a href="./index.html#map" class="footer__wrap_collum_link">Карта</a>
-                        </li>
-                        <li class="footer__wrap_collum_text">
-                            <a href="./index.html#about" class="footer__wrap_collum_link">Описание</a>
-                        </li>
-                    </ul>
-                    <ul class="footer__wrap_collum">
-                        <li class="footer__wrap_collum_title">
-                            <a href="./index.html" class="footer__wrap_collum_link">Достопримечательности</a>
-                        </li>
-                        <li class="footer__wrap_collum_text">
-                            <a href="./sight.html#searchInput" class="footer__wrap_collum_link">Поиск</a>
-                        </li>
-                        <li class="footer__wrap_collum_text">
-                            <a href="./sight.html#footer" class="footer__wrap_collum_link">Контакты</a>
-                        </li>
-                    </ul>
-                    <ul class="footer__wrap_collum">
-                        <li class="footer__wrap_collum_title">
-                            <a href="./contact.html" class="footer__wrap_collum_link">Контакты</a>
-                        </li>
-                        <li class="footer__wrap_collum_text">
-                            <a href="./contact.html" class="footer__wrap_collum_link">FAQ</a>
-                        </li>
-                        <li class="footer__wrap_collum_text">
-                            <a href="./contact.html" class="footer__wrap_collum_link">Связаться с нами</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </section>
+    </section>
 </body>
 
 </html>
