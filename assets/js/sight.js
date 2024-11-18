@@ -4,6 +4,23 @@ const itemsPerPage = 3; // Количество элементов на стра
 let totalItems = 0; // Общее количество элементов
 let totalPages = 0;
 
+
+async function fetchUsers() {
+    try {
+        const response = await fetch(apiUrl);
+        allUsers = await response.json();
+        totalItems = allUsers.length;
+        totalPages = Math.ceil(totalItems / itemsPerPage);
+        displayUsers(currentPage);
+        updateButtons();    
+    } catch (error) {
+        console.error('Ошибка получения данных', error);
+    }
+}
+
+
+
+
 // Поиск
 
 document.getElementById('searchButton').addEventListener('click', () => {
