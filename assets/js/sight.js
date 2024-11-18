@@ -66,9 +66,32 @@ function displayUsers(page) {
 
 }
 
+function updatePage(page) {
+    currentPage = page;
+    displayUsers(currentPage);
+    document.getElementById('num').textContent = page;
+    updateButtons();
+}
+
+function updateButtons(){
+    document.getElementById('prevPage').disabled = currentPage === 1;
+    document.getElementById('nextPage').disabled = currentPage === totalPages;
+}
+
+document.getElementById('prevPage').addEventListener('click', () => {
+    if (currentPage > 1) {
+        updatePage(currentPage - 1);
+    }
+});
+
+document.getElementById('nextPage').addEventListener('click', () => {
+    if (currentPage < totalPages) {
+        updatePage(currentPage + 1);
+     }
+});
 
 
-
+fetchUsers();
 
 
 
