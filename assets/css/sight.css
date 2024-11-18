@@ -204,30 +204,18 @@ a {
   }
 }
 .main__card1 {
-  position: relative;
+  background-color: #fff;
+  border-radius: 25px 25px 0px 25px;
   display: flex;
-  margin-top: 75px;
-}
-@media (max-width: 426px) {
-  .main__card1 {
-    flex-direction: column;
-  }
+  justify-content: space-between;
+  margin-bottom: 30px;
+  margin-top: 50px;
 }
 .main__card1_img {
-  position: absolute;
-}
-@media (max-width: 426px) {
-  .main__card1_img {
-    position: relative;
-    width: 100%;
-    margin-bottom: -40px;
-  }
+  border-radius: 25px 25px 0px 25px;
 }
 .main__card1_textWrap {
-  background-color: #fff;
-  margin-left: 30%;
-  padding-left: 17%;
-  border-radius: 25px 25px 0px 25px;
+  padding: 35px;
 }
 @media (max-width: 426px) {
   .main__card1_textWrap {
@@ -237,20 +225,17 @@ a {
   }
 }
 .main__card1_textWrap_title {
-  padding-top: 44px;
   font-size: 25px;
   color: #1E2B4E;
   font-family: "Rubik Mono One";
-  margin-left: 20%;
 }
 .main__card1_textWrap_text {
-  margin-top: 45px;
+  margin-top: 35px;
   font-size: 16px;
   color: #1E2B4E;
   font-family: "Rubik Mono One";
   letter-spacing: 14%;
   line-height: 150%;
-  width: 690px;
   padding-bottom: 15%;
 }
 @media (max-width: 426px) {

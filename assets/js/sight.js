@@ -29,27 +29,30 @@ function displayUsers(page) {
     userToDisplay.forEach(user => {
 
         const a = document.createElement('a');
-        a.href = './da.html'
+        a.href = './da.html';
         a.dataset.user = JSON.stringify(user);
 
         const li = document.createElement('li');
+        li.classList.add("main__card1")
         const wrap = document.createElement('div');
+        wrap.classList.add("main__card1_textWrap");
         a.appendChild(li);
         li.appendChild(wrap);
 
         let title = document.createElement('p');
-        title.classList.add("title");
+        title.classList.add("main__card1_textWrap_title");
         title.textContent = user.title;
         wrap.appendChild(title);
 
         let text = document.createElement('p');
         text.textContent = user.text;
-        text.classList.add("text");
+        text.classList.add("main__card1_textWrap_text");
         wrap.appendChild(text);
 
         let image = document.createElement('img');
         image.src = user.img;
         image.alt = user.title;
+        image.classList.add("main__card1_img");
         li.appendChild(image);
 
         userList.appendChild(a);
@@ -57,7 +60,7 @@ function displayUsers(page) {
 
 
     userList.querySelectorAll('a').forEach(a => {
-        a.addEventListener('click', function(event) {
+        a.addEventListener('click', function (event) {
             event.preventDefault();
             localStorage.setItem('selectedUser', a.dataset.user);
             window.location.href = a.href;
@@ -73,7 +76,7 @@ function updatePage(page) {
     updateButtons();
 }
 
-function updateButtons(){
+function updateButtons() {
     document.getElementById('prevPage').disabled = currentPage === 1;
     document.getElementById('nextPage').disabled = currentPage === totalPages;
 }
@@ -87,7 +90,7 @@ document.getElementById('prevPage').addEventListener('click', () => {
 document.getElementById('nextPage').addEventListener('click', () => {
     if (currentPage < totalPages) {
         updatePage(currentPage + 1);
-     }
+    }
 });
 
 
@@ -110,11 +113,11 @@ document.getElementById('searchButton').addEventListener('click', () => {
 
 function searchUsers(query) {
     const url = new URL('https://672caf7e1600dda5a9f97a34.mockapi.io/user');
-    url.searchParams.append('title', query);
+    url.searchParams.append('title', query); // Добавляем параметр для поиска по полю title
 
     fetch(url, {
         method: 'GET',
-        headers: { 'content-type': 'aplication/json' },
+        headers: { 'content-type': 'application/json' },
     })
         .then(res => {
             if (res.ok) {
@@ -123,7 +126,7 @@ function searchUsers(query) {
             throw new Error('Сетевой ответ был не ok.');
         })
         .then(tasks => {
-            displayResult(tasks);
+            displayResults(tasks);
         })
         .catch(error => {
             console.error('Ошибка:', error);
@@ -131,26 +134,37 @@ function searchUsers(query) {
         });
 }
 
+function displayResults(tasks) {
+    const resultsContainer = document.getElementById('resultsContainer');
+    resultsContainer.innerHTML = ''; // Очищаем контейнер перед добавлением новых данных
 
+    if (tasks.length === 0) {
+        resultsContainer.innerHTML = '<p>Ничего не найдено.</p>';
+        return;
+    }
 
-// document.addEventListener('DOMContentLoaded', function() {
-//     const searchInput = document.getElementById('searchInput');
-//     const cards = document.querySelectorAll('#mainCard');
+    tasks.forEach(task => {
+        const resultItem = document.createElement('div');
+        resultItem.classList.add('result-item');
 
-//     searchInput.addEventListener('input', function() {
-//         const filter = searchInput.value.toLowerCase();
+        const title = document.createElement('p');
+        title.textContent = task.title;
+        title.classList.add('title1')
+        resultItem.appendChild(title);
 
-//         cards.forEach(card => {
-//             const text = card.textContent.toLowerCase();
+        const text = document.createElement('p');
+        text.textContent = task.text;
+        resultItem.appendChild(text);
 
-//             if (text.includes(filter)) {
-//                 card.style.display = '';
-//             } else {
-//                 card.style.display = 'none';
-//             }
-//         });
-//     });
-// });
+        const image = document.createElement('img');
+        image.src = task.img;
+        image.alt = task.title;
+        resultItem.appendChild(image);
+
+        resultsContainer.appendChild(resultItem);
+    });
+}
+
 
 
 // Filter 
