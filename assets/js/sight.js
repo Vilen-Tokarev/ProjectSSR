@@ -12,11 +12,64 @@ async function fetchUsers() {
         totalItems = allUsers.length;
         totalPages = Math.ceil(totalItems / itemsPerPage);
         displayUsers(currentPage);
-        updateButtons();    
+        updateButtons();
     } catch (error) {
         console.error('Ошибка получения данных', error);
     }
 }
+
+function displayUsers(page) {
+    const userList = document.getElementById('userList');
+    userList.innerHTML = '';
+
+    const startIndex = (page - 1) * itemsPerPage;
+    const endIndex = startIndex + itemsPerPage;
+    const userToDisplay = allUsers.slice(startIndex, endIndex);
+
+    userToDisplay.forEach(user => {
+
+        const a = document.createElement('a');
+        a.href = './da.html'
+        a.dataset.user = JSON.stringify(user);
+
+        const li = document.createElement('li');
+        const wrap = document.createElement('div');
+        a.appendChild(li);
+        li.appendChild(wrap);
+
+        let title = document.createElement('p');
+        title.classList.add("title");
+        title.textContent = user.title;
+        wrap.appendChild(title);
+
+        let text = document.createElement('p');
+        text.textContent = user.text;
+        text.classList.add("text");
+        wrap.appendChild(text);
+
+        let image = document.createElement('img');
+        image.src = user.img;
+        image.alt = user.title;
+        li.appendChild(image);
+
+        userList.appendChild(a);
+    });
+
+
+    userList.querySelectorAll('a').forEach(a => {
+        a.addEventListener('click', function(event) {
+            event.preventDefault();
+            localStorage.setItem('selectedUser', a.dataset.user);
+            window.location.href = a.href;
+        })
+    })
+
+}
+
+
+
+
+
 
 
 
@@ -42,7 +95,7 @@ function searchUsers(query) {
     })
         .then(res => {
             if (res.ok) {
-                return res.json();    
+                return res.json();
             }
             throw new Error('Сетевой ответ был не ok.');
         })
@@ -75,60 +128,14 @@ function searchUsers(query) {
 //         });
 //     });
 // });
-// Пагинация
-document.addEventListener('DOMContentLoaded', function() {
-    const cards = document.querySelectorAll('#mainCard');
-    const cardsPerPage = 3;
-    let currentPage = localStorage.getItem('currentPage') ? parseInt(localStorage.getItem('currentPage')) : 1;
-    // Проверяем есть ли катрочка на странице
-    function showPage(page) {
-        const startIndex = (page - 1) * cardsPerPage;
-        const endIndex = startIndex + cardsPerPage;
 
-        cards.forEach((card, index) => {
-            if (index >= startIndex && index < endIndex) {
-                card.style.display = '';
-            } else {
-                card.style.display = 'none';
-            }
-        });
-
-        document.getElementById('page-number').textContent = page;
-    }
-    // Обновить кнопочки
-    function updateButtons() {
-        document.getElementById('prev-page').disabled = currentPage === 1;
-        document.getElementById('next-page').disabled = currentPage === Math.ceil(cards.length / cardsPerPage);
-    }
-    // Кнопочки (вперед, назад)
-    document.getElementById('prev-page').addEventListener('click', () => {
-        if (currentPage > 1) {
-            currentPage--;
-            showPage(currentPage);
-            updateButtons();
-            localStorage.setItem('currentPage', currentPage);
-        }
-    });
-
-    document.getElementById('next-page').addEventListener('click', () => {
-        if (currentPage < Math.ceil(cards.length / cardsPerPage)) {
-            currentPage++;
-            showPage(currentPage);
-            updateButtons();
-            localStorage.setItem('currentPage', currentPage);
-        }
-    });
-
-    showPage(currentPage);
-    updateButtons();
-});
 
 // Filter 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const filterSelect = document.querySelector('.search__filter-buttons');
     const cards = document.querySelectorAll('#mainCard');
 
-    filterSelect.addEventListener('change', function() {
+    filterSelect.addEventListener('change', function () {
         const category = this.options[this.selectedIndex].getAttribute('data-category');
         // Перебираем карточки и оставляем те которые нужны
         cards.forEach(card => {
@@ -140,14 +147,14 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const filterSelect = document.querySelector('.search__filter-buttons');
     const cards = document.querySelectorAll('#mainCard');
 
     // Загрузка сохраненной категории из localStorage
     loadSelectedCategory();
 
-    filterSelect.addEventListener('change', function() {
+    filterSelect.addEventListener('change', function () {
         const category = this.options[this.selectedIndex].getAttribute('data-category');
 
         // Сохраняем выбранную категорию в localStorage
@@ -176,15 +183,15 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 
-document.getElementById('burgerIcon').addEventListener('click', function() { 
-    const menuItems = document.getElementById('menuItems'); 
-    const burgerIcon = document.getElementById('burgerIcon'); 
- 
-    if (menuItems.classList.contains('open')) { 
-        menuItems.classList.remove('open'); 
-        burgerIcon.classList.remove('open'); 
-    } else { 
-        menuItems.classList.add('open'); 
-        burgerIcon.classList.add('open'); 
-    } 
+document.getElementById('burgerIcon').addEventListener('click', function () {
+    const menuItems = document.getElementById('menuItems');
+    const burgerIcon = document.getElementById('burgerIcon');
+
+    if (menuItems.classList.contains('open')) {
+        menuItems.classList.remove('open');
+        burgerIcon.classList.remove('open');
+    } else {
+        menuItems.classList.add('open');
+        burgerIcon.classList.add('open');
+    }
 });
