@@ -4,6 +4,16 @@ const itemsPerPage = 3; // Количество элементов на стра
 let totalItems = 0; // Общее количество элементов
 let totalPages = 0;
 
+window.onload = function() { 
+    let preloader = document.getElementById('loader'); 
+    let bg = document.getElementById("loading") 
+    preloader.classList.add('hide-loader'); 
+    bg.classList.add('hide-loader'); 
+    setInterval(function() { 
+      preloader.classList.add('loader-hidden'); 
+      bg.classList.add('loader-hidden'); 
+    }, 2500); 
+  }
 
 async function fetchUsers() {
     try {

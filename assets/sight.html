@@ -20,23 +20,10 @@
 </head>
 
 <body>
-    <div class="loaderArea">
-        <div class="loader"></div>
+    <div id="loading"></div> 
+    <div id="loader" class="load"> 
+        <hr/><hr/><hr/><hr/> 
     </div>
-    <script>
-        window.addEventListener('load', function () {
-            var preloader = document.querySelector('.loaderArea');
-            var loader = preloader.querySelector('.loader');
-
-            loader.style.opacity = '0';
-            setTimeout(function () {
-                preloader.style.opacity = '0';
-                setTimeout(function () {
-                    preloader.style.display = 'none';
-                }, 350);
-            }, 50); // Небольшая задержка для плавного затухания
-        });
-    </script>
     <section class="header">
         <div class="container">
             <div class="header__box">
