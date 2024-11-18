@@ -1,22 +1,47 @@
 // Поиск
-document.addEventListener('DOMContentLoaded', function() {
-    const searchInput = document.getElementById('searchInput');
-    const cards = document.querySelectorAll('#mainCard');
 
-    searchInput.addEventListener('input', function() {
-        const filter = searchInput.value.toLowerCase();
-
-        cards.forEach(card => {
-            const text = card.textContent.toLowerCase();
-
-            if (text.includes(filter)) {
-                card.style.display = '';
-            } else {
-                card.style.display = 'none';
-            }
-        });
-    });
+document.getElementById('searchButton').addEventListener('click', () => {
+    const searchQuery = document.getElementById('searchInput').value;
+    if (searchQuery) {
+        searchUsers(searchQuery)
+    } else {
+        alert('Вы ничего не ввели')
+    }
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// document.addEventListener('DOMContentLoaded', function() {
+//     const searchInput = document.getElementById('searchInput');
+//     const cards = document.querySelectorAll('#mainCard');
+
+//     searchInput.addEventListener('input', function() {
+//         const filter = searchInput.value.toLowerCase();
+
+//         cards.forEach(card => {
+//             const text = card.textContent.toLowerCase();
+
+//             if (text.includes(filter)) {
+//                 card.style.display = '';
+//             } else {
+//                 card.style.display = 'none';
+//             }
+//         });
+//     });
+// });
 // Пагинация
 document.addEventListener('DOMContentLoaded', function() {
     const cards = document.querySelectorAll('#mainCard');
