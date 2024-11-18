@@ -1,3 +1,9 @@
+const apiUrl = 'https://672caf7e1600dda5a9f97a34.mockapi.io/user';
+let currentPage = 1;
+const itemsPerPage = 3; // Количество элементов на странице
+let totalItems = 0; // Общее количество элементов
+let totalPages = 0;
+
 // Поиск
 
 document.getElementById('searchButton').addEventListener('click', () => {
@@ -9,18 +15,28 @@ document.getElementById('searchButton').addEventListener('click', () => {
     }
 });
 
+function searchUsers(query) {
+    const url = new URL('https://672caf7e1600dda5a9f97a34.mockapi.io/user');
+    url.searchParams.append('title', query);
 
-
-
-
-
-
-
-
-
-
-
-
+    fetch(url, {
+        method: 'GET',
+        headers: { 'content-type': 'aplication/json' },
+    })
+        .then(res => {
+            if (res.ok) {
+                return res.json();    
+            }
+            throw new Error('Сетевой ответ был не ok.');
+        })
+        .then(tasks => {
+            displayResult(tasks);
+        })
+        .catch(error => {
+            console.error('Ошибка:', error);
+            alert('Произошла ошибка при выполнении запроса.');
+        });
+}
 
 
 
