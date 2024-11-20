@@ -24,8 +24,9 @@ const card = document.getElementById('userDetails');
             title.textContent = selectedUser.title;
             wrap.appendChild(title);
     
+            
             let text = document.createElement('p');
-            text.textContent = selectedUser.text;
+            text.textContent = selectedUser.textCard;
             text.classList.add("main__card1_textWrap_text");
             wrap.appendChild(text);
     

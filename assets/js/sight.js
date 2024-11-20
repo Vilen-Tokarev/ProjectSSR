@@ -55,6 +55,8 @@ function displayUsers(page, filteredUsers = allUsers) {
         title.classList.add("main__card1_textWrap_title");
         title.textContent = user.title;
         wrap.appendChild(title);
+        
+        let textCard = document.createElement('p');
 
         let text = document.createElement('p');
         text.textContent = user.text;
