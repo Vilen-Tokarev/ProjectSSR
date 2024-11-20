@@ -313,6 +313,8 @@ a {
 }
 .main__card1_img {
   border-radius: 0px 25px 25px 0px;
+  width: 640px;
+  height: 100%;
 }
 .main__card1_textWrap {
   padding: 35px;
@@ -336,7 +338,6 @@ a {
   font-family: "Rubik Mono One";
   letter-spacing: 14%;
   line-height: 150%;
-  padding-bottom: 15%;
 }
 @media (max-width: 426px) {
   .main__card1_textWrap_text {

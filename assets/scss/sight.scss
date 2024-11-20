@@ -358,6 +358,8 @@ a {
 
         &_img {
             border-radius: 0px 25px 25px 0px;
+            width: 640px;
+            height: 100%;
         }
 
         &_textWrap {
@@ -389,7 +391,7 @@ a {
                 font-family: "Rubik Mono One";
                 letter-spacing: 14%;
                 line-height: 150%;
-                padding-bottom: 15%;
+                
             }
         }
     }
