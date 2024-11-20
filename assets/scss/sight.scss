@@ -294,7 +294,7 @@ a {
             position: relative;
         }
 
-        &_search-btn{
+        &_search-btn {
             background-color: #00000067;
             z-index: 2;
             cursor: pointer;
@@ -305,7 +305,8 @@ a {
             border: none;
             margin-top: 24px;
             transition: 0.3s;
-            &:hover{
+
+            &:hover {
                 background-color: #000;
             }
         }
@@ -392,6 +393,7 @@ a {
             }
         }
     }
+
 }
 
 .pag {

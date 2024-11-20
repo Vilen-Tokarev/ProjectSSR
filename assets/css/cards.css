@@ -248,10 +248,12 @@ a {
 .main__card1 {
   background-color: #fff;
   border-radius: 25px 25px 25px 25px;
-  display: flex;
-  justify-content: space-between;
   margin-bottom: 30px;
   margin-top: 50px;
+}
+.main__card1_img {
+  width: 640px;
+  height: 480px;
 }
 .main__card1_textWrap {
   padding: 35px;
@@ -267,15 +269,17 @@ a {
   font-size: 25px;
   color: #1E2B4E;
   font-family: "Rubik Mono One";
+  border-bottom: 2px solid #1E2B4E;
+  padding-bottom: 7px;
 }
 .main__card1_textWrap_text {
-  margin-top: 35px;
+  margin-top: 55px;
   font-size: 16px;
   color: #1E2B4E;
   font-family: "Rubik Mono One";
   letter-spacing: 14%;
   line-height: 150%;
-  padding-bottom: 15%;
+  padding-bottom: 10px;
 }
 @media (max-width: 426px) {
   .main__card1_textWrap_text {
@@ -284,6 +288,17 @@ a {
     text-align: center;
     margin-top: 30px;
   }
+}
+.main__mapWrap {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 50px;
+  padding-top: 50px;
+}
+.main__imgWrap {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
 }
 
 .footer {

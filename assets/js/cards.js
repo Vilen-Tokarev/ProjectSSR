@@ -24,24 +24,42 @@ const card = document.getElementById('userDetails');
             title.textContent = selectedUser.title;
             wrap.appendChild(title);
     
-            
             let text = document.createElement('p');
             text.textContent = selectedUser.textCard;
             text.classList.add("main__card1_textWrap_text");
             wrap.appendChild(text);
+
+            let imgWrap = document.createElement('div');
+            imgWrap.classList.add("main__imgWrap");
+            li.appendChild(imgWrap)
     
             let image = document.createElement('img');
             image.src = selectedUser.img;
             image.alt = selectedUser.title;
             image.classList.add("main__card1_img");
-            li.appendChild(image);
+            imgWrap.appendChild(image);
 
             let image2 = document.createElement('img');
             image2.src = selectedUser.img2;
             image2.alt = selectedUser.title;
             image2.classList.add("main__card1_img");
-            li.appendChild(image2);
+            imgWrap.appendChild(image2);
     
+            let mapWrap = document.createElement('div');
+            mapWrap.classList.add("main__mapWrap");
+            li.appendChild(mapWrap)
+
+            let map = document.createElement('iframe')
+            map.src = selectedUser.map
+            map.width = "800"
+            map.height = "450"
+            map.style = "border:0;border-radius: 10px;"
+            map.allowFullscreen = ""
+            map.loading = "lazy"
+            map.referrerPolicy = "no-referrer-when-downgrade"
+            mapWrap.appendChild(map)
+
+
             card.appendChild(li);
         } else {
             document.getElementById('userDetails').textContent = 'No user data found.';
