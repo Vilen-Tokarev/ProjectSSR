@@ -5,6 +5,7 @@ let totalItems = 0; // Общее количество элементов
 let totalPages = 0;
 allUsers = [];
 
+// Loader
 window.onload = function () {
     let preloader = document.getElementById('loader');
     let bg = document.getElementById("loading")
@@ -16,6 +17,7 @@ window.onload = function () {
     }, 2500);
 }
 
+// Получение 'user' из api
 async function fetchUsers() {
     try {
         const response = await fetch(apiUrl);
@@ -29,14 +31,16 @@ async function fetchUsers() {
     }
 }
 
+// Функция отображение карточек
 function displayUsers(page, filteredUsers = allUsers) {
     const userList = document.getElementById('userList');
     userList.innerHTML = '';
 
-    const startIndex = (page - 1) * itemsPerPage;
+    const startIndex = (page - 1) * itemsPerPage; 
     const endIndex = startIndex + itemsPerPage;
     const userToDisplay = filteredUsers.slice(startIndex, endIndex);
 
+    // html генерация
     userToDisplay.forEach(user => {
 
         const a = document.createElement('a');
@@ -78,14 +82,14 @@ function displayUsers(page, filteredUsers = allUsers) {
     });
 
     userList.querySelectorAll('a').forEach(a => {
-        a.addEventListener('click', function (event) {
-            event.preventDefault();
+        a.addEventListener('click', function () {
             localStorage.setItem('selectedUser', a.dataset.user);
-            window.location.href = a.href;
         })
     })
 }
 
+
+// Пагинация
 function updatePage(page) {
     currentPage = page;
     displayUsers(currentPage);
@@ -110,13 +114,13 @@ document.getElementById('nextPage').addEventListener('click', () => {
     }
 });
 
-
 fetchUsers();
 
 
 
 // Поиск
 
+// Обработка кнопки поиска
 document.getElementById('searchButton').addEventListener('click', () => {
     const searchQuery = document.getElementById('searchInput').value;
     if (searchQuery) {
@@ -126,9 +130,10 @@ document.getElementById('searchButton').addEventListener('click', () => {
     }
 });
 
+// Запрос на сервер и проверка состояния ответа
 function searchUsers(query) {
     const url = new URL('https://672caf7e1600dda5a9f97a34.mockapi.io/user');
-    url.searchParams.append('title', query); // Добавляем параметр для поиска по полю title
+    url.searchParams.append('title', query); 
 
     fetch(url, {
         method: 'GET',
@@ -148,7 +153,7 @@ function searchUsers(query) {
             alert('Произошла ошибка при выполнении запроса.');
         });
 }
-
+// Вывод карточек по поиску
 function displayResults(tasks) {
     const resultsContainer = document.getElementById('resultsContainer');
     resultsContainer.innerHTML = '';
@@ -191,7 +196,7 @@ function displayResults(tasks) {
     });
 }
 
-
+// Фильтер 
 document.addEventListener('DOMContentLoaded', function () {
     const filterSelect = document.querySelector('.search__filter-buttons');
 
@@ -210,6 +215,7 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
+// Burger
 document.getElementById('burgerIcon').addEventListener('click', function () {
     const menuItems = document.getElementById('menuItems');
     const burgerIcon = document.getElementById('burgerIcon');
