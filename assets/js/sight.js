@@ -40,7 +40,7 @@ function displayUsers(page, filteredUsers = allUsers) {
     userToDisplay.forEach(user => {
 
         const a = document.createElement('a');
-        a.href = './da.html';
+        a.href = './cards.html';
         a.dataset.user = JSON.stringify(user);
 
         const li = document.createElement('li');
@@ -60,6 +60,11 @@ function displayUsers(page, filteredUsers = allUsers) {
         text.textContent = user.text;
         text.classList.add("main__card1_textWrap_text");
         wrap.appendChild(text);
+
+        let image2 = document.createElement('img');
+        image2.src = user.img2;
+        image2.alt = user.title;
+        image2.classList.add("main__card1_img");
 
         let image = document.createElement('img');
         image.src = user.img;
@@ -108,8 +113,6 @@ fetchUsers();
 
 
 
-
-
 // Поиск
 
 document.getElementById('searchButton').addEventListener('click', () => {
@@ -146,7 +149,7 @@ function searchUsers(query) {
 
 function displayResults(tasks) {
     const resultsContainer = document.getElementById('resultsContainer');
-    resultsContainer.innerHTML = ''; // Очищаем контейнер перед добавлением новых данных
+    resultsContainer.innerHTML = '';
 
     if (tasks.length === 0) {
         resultsContainer.innerHTML = 'Ничего не найдено.';
@@ -155,7 +158,7 @@ function displayResults(tasks) {
 
     tasks.forEach(task => {
         const a = document.createElement('a');
-        a.href = './da.html';
+        a.href = './cards.html';
 
         const li = document.createElement('li');
         li.classList.add("main__card1")
@@ -175,6 +178,7 @@ function displayResults(tasks) {
         text.classList.add('main__card1_textWrap_text');
         wrap.appendChild(text);
 
+        
         const image = document.createElement('img');
         image.src = task.img;
         image.alt = task.title;
