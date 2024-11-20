@@ -7,88 +7,96 @@ body {
     background-color: #5484DC;
 }
 
-#loading { 
-    width: 100vw; 
-    height: 100vh; 
-    background-color: #5484DC; 
-    position: fixed; 
-    top: 0; 
-    left: 0; 
-    z-index: 5; 
-} 
- 
-.hide { 
-    display: none; 
-} 
- 
-.load { 
-    position: fixed; 
-    top:50%; 
-    left:50%; 
-    transform:translate(-50%, -50%); 
-    width:100px; 
-    height:100px; 
-    z-index: 6; 
-} 
-.load hr { 
-    border:0; 
-    margin:0; 
-    width:40%; 
-    height:40%; 
-    position:absolute; 
-    border-radius:50%; 
-    animation:spin 2s ease infinite; 
-} 
- 
-.load :first-child { 
-    background:#19A68C; 
-    animation-delay:-1.5s 
-} 
- 
-.load :nth-child(2) { 
-    background:#F63D3A; 
-    animation-delay:-1s 
-} 
- 
-.load :nth-child(3) { 
-    background:#FDA543; 
-    animation-delay:-0.5s 
-} 
- 
-.load :last-child { 
-    background:#193B48 
-} 
- 
-.hide-loader { 
-    animation: hidePreloader 1s; 
-} 
- 
-.loader-hidden { 
-    display: none; 
-} 
- 
-@keyframes hideloader { 
-    0% { 
-        opacity: 1; 
-    } 
-    100% { 
-        opacity: 0; 
-    } 
+#loading {
+    width: 100vw;
+    height: 100vh;
+    background-color: #5484DC;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 5;
 }
-@keyframes spin { 
-    0%, 100% { 
-      transform: translate(0); 
-    } 
-    25% { 
-      transform: translate(160%); 
-    } 
-    50% { 
-      transform: translate(160%, 160%); 
-    } 
-    75% { 
-      transform: translate(0, 160%); 
-    } 
-  }
+
+.hide {
+    display: none;
+}
+
+.load {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100px;
+    height: 100px;
+    z-index: 6;
+}
+
+.load hr {
+    border: 0;
+    margin: 0;
+    width: 40%;
+    height: 40%;
+    position: absolute;
+    border-radius: 50%;
+    animation: spin 2s ease infinite;
+}
+
+.load :first-child {
+    background: #19A68C;
+    animation-delay: -1.5s
+}
+
+.load :nth-child(2) {
+    background: #F63D3A;
+    animation-delay: -1s
+}
+
+.load :nth-child(3) {
+    background: #FDA543;
+    animation-delay: -0.5s
+}
+
+.load :last-child {
+    background: #193B48
+}
+
+.hide-loader {
+    animation: hidePreloader 1s;
+}
+
+.loader-hidden {
+    display: none;
+}
+
+@keyframes hideloader {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes spin {
+
+    0%,
+    100% {
+        transform: translate(0);
+    }
+
+    25% {
+        transform: translate(160%);
+    }
+
+    50% {
+        transform: translate(160%, 160%);
+    }
+
+    75% {
+        transform: translate(0, 160%);
+    }
+}
 
 .container {
     width: 1282px;
@@ -107,6 +115,7 @@ li {
 a {
     text-decoration: none;
 }
+
 .header {
 
     height: 74px;

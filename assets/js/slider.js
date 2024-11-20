@@ -2,6 +2,18 @@ let horizontScroll = document.querySelector('.main__slider');
 let leftbtn = document.getElementById('leftbtn');     
 let rightbtn = document.getElementById('rightbtn');
 
+window.onload = function () {
+    let preloader = document.getElementById('loader');
+    let bg = document.getElementById("loading")
+    preloader.classList.add('hide-loader');
+    bg.classList.add('hide-loader');
+    setInterval(function () {
+        preloader.classList.add('loader-hidden');
+        bg.classList.add('loader-hidden');
+    }, 2500);
+}
+
+
 // Слайдер
 rightbtn.addEventListener('click', () => {
     horizontScroll.style.scrollBehavior = 'smooth';

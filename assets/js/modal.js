@@ -1,3 +1,15 @@
+
+window.onload = function () {
+    let preloader = document.getElementById('loader');
+    let bg = document.getElementById("loading")
+    preloader.classList.add('hide-loader');
+    bg.classList.add('hide-loader');
+    setInterval(function () {
+        preloader.classList.add('loader-hidden');
+        bg.classList.add('loader-hidden');
+    }, 2500);
+}
+
 document.getElementById("open-modal-btn").addEventListener("click",function() {
     document.getElementById("modal").classList.add("open")
 })

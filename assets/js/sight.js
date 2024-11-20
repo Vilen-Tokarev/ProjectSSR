@@ -3,17 +3,18 @@ let currentPage = 1;
 const itemsPerPage = 3; // Количество элементов на странице
 let totalItems = 0; // Общее количество элементов
 let totalPages = 0;
+allUsers = [];
 
-window.onload = function() { 
-    let preloader = document.getElementById('loader'); 
-    let bg = document.getElementById("loading") 
-    preloader.classList.add('hide-loader'); 
-    bg.classList.add('hide-loader'); 
-    setInterval(function() { 
-      preloader.classList.add('loader-hidden'); 
-      bg.classList.add('loader-hidden'); 
-    }, 2500); 
-  }
+window.onload = function () {
+    let preloader = document.getElementById('loader');
+    let bg = document.getElementById("loading")
+    preloader.classList.add('hide-loader');
+    bg.classList.add('hide-loader');
+    setInterval(function () {
+        preloader.classList.add('loader-hidden');
+        bg.classList.add('loader-hidden');
+    }, 2500);
+}
 
 async function fetchUsers() {
     try {
@@ -28,13 +29,13 @@ async function fetchUsers() {
     }
 }
 
-function displayUsers(page) {
+function displayUsers(page, filteredUsers = allUsers) {
     const userList = document.getElementById('userList');
     userList.innerHTML = '';
 
     const startIndex = (page - 1) * itemsPerPage;
     const endIndex = startIndex + itemsPerPage;
-    const userToDisplay = allUsers.slice(startIndex, endIndex);
+    const userToDisplay = filteredUsers.slice(startIndex, endIndex);
 
     userToDisplay.forEach(user => {
 
@@ -46,6 +47,7 @@ function displayUsers(page) {
         li.classList.add("main__card1")
         const wrap = document.createElement('div');
         wrap.classList.add("main__card1_textWrap");
+
         a.appendChild(li);
         li.appendChild(wrap);
 
@@ -68,7 +70,6 @@ function displayUsers(page) {
         userList.appendChild(a);
     });
 
-
     userList.querySelectorAll('a').forEach(a => {
         a.addEventListener('click', function (event) {
             event.preventDefault();
@@ -76,7 +77,6 @@ function displayUsers(page) {
             window.location.href = a.href;
         })
     })
-
 }
 
 function updatePage(page) {
@@ -149,83 +149,57 @@ function displayResults(tasks) {
     resultsContainer.innerHTML = ''; // Очищаем контейнер перед добавлением новых данных
 
     if (tasks.length === 0) {
-        resultsContainer.innerHTML = '<p>Ничего не найдено.</p>';
+        resultsContainer.innerHTML = 'Ничего не найдено.';
         return;
     }
 
     tasks.forEach(task => {
-        const resultItem = document.createElement('div');
-        resultItem.classList.add('result-item');
+        const a = document.createElement('a');
+        a.href = './da.html';
+
+        const li = document.createElement('li');
+        li.classList.add("main__card1")
+        const wrap = document.createElement('div');
+        wrap.classList.add("main__card1_textWrap");
+
+        a.appendChild(li);
+        li.appendChild(wrap);
 
         const title = document.createElement('p');
         title.textContent = task.title;
-        title.classList.add('title1')
-        resultItem.appendChild(title);
+        title.classList.add('main__card1_textWrap_title')
+        wrap.appendChild(title);
 
         const text = document.createElement('p');
         text.textContent = task.text;
-        resultItem.appendChild(text);
+        text.classList.add('main__card1_textWrap_text');
+        wrap.appendChild(text);
 
         const image = document.createElement('img');
         image.src = task.img;
         image.alt = task.title;
-        resultItem.appendChild(image);
+        image.classList.add("main__card1_img");
+        li.appendChild(image);
 
-        resultsContainer.appendChild(resultItem);
+        resultsContainer.appendChild(a);
     });
 }
 
 
-
-// Filter 
 document.addEventListener('DOMContentLoaded', function () {
     const filterSelect = document.querySelector('.search__filter-buttons');
-    const cards = document.querySelectorAll('#mainCard');
 
     filterSelect.addEventListener('change', function () {
-        const category = this.options[this.selectedIndex].getAttribute('data-category');
-        // Перебираем карточки и оставляем те которые нужны
-        cards.forEach(card => {
-            if (category === 'all' || card.getAttribute('data-category') === category) {
-                card.style.display = '';
-            } else {
-                card.style.display = 'none';
-            }
-        });
-    });
-});
-document.addEventListener('DOMContentLoaded', function () {
-    const filterSelect = document.querySelector('.search__filter-buttons');
-    const cards = document.querySelectorAll('#mainCard');
-
-    // Загрузка сохраненной категории из localStorage
-    loadSelectedCategory();
-
-    filterSelect.addEventListener('change', function () {
-        const category = this.options[this.selectedIndex].getAttribute('data-category');
-
-        // Сохраняем выбранную категорию в localStorage
-        saveSelectedCategory(category);
-
-        cards.forEach(card => {
-            if (category === 'all' || card.getAttribute('data-category') === category) {
-                card.style.display = '';
-            } else {
-                card.style.display = 'none';
-            }
-        });
+        const category = this.value;
+        applyFilters(category);
     });
 
-    function saveSelectedCategory(category) {
-        localStorage.setItem('selectedCategory', category);
-    }
-    // Функция загрузки из local storage
-    function loadSelectedCategory() {
-        const savedCategory = localStorage.getItem('selectedCategory');
-        if (savedCategory) {
-            filterSelect.querySelector(`option[data-category="${savedCategory}"]`).selected = true;
-            filterSelect.dispatchEvent(new Event('change'));
-        }
+    function applyFilters(category) {
+        const filteredUsers = allUsers.filter(user => {
+            return category === 'all' || user.category === category;
+        });
+
+        displayUsers(currentPage, filteredUsers);
     }
 });
 
