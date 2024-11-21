@@ -156,7 +156,7 @@ a {
   width: 80px;
   height: 25px;
   float: right;
-  z-index: 1000;
+  z-index: 4;
 }
 @media (max-width: 426px) {
   .header .burger__menu {
@@ -269,6 +269,11 @@ a {
   opacity: 0.7;
   transition: 0.3s;
   cursor: pointer;
+}
+@media (max-width: 426px) {
+  .main__slider_gallery :hover {
+    opacity: 1;
+  }
 }
 .main__controls {
   margin: 0 auto;

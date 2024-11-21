@@ -151,7 +151,7 @@ a {
   width: 80px;
   height: 25px;
   float: right;
-  z-index: 1000;
+  z-index: 4;
 }
 @media (max-width: 426px) {
   .header .burger__menu {
@@ -310,6 +310,10 @@ a {
   justify-content: space-between;
   margin-bottom: 30px;
   margin-top: 50px;
+  transition: 0.4s;
+}
+.main__card1:hover {
+  transform: translateY(-10px);
 }
 .main__card1_img {
   border-radius: 0px 25px 25px 0px;

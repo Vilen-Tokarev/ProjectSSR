@@ -117,7 +117,6 @@ a {
 }
 
 .header {
-
     height: 74px;
 
     &__box {
@@ -164,7 +163,7 @@ a {
             width: 80px;
             height: 25px;
             float: right;
-            z-index: 1000;
+            z-index: 4;
 
             @media (max-width:426px) {
                 display: block;
@@ -355,6 +354,10 @@ a {
         justify-content: space-between;
         margin-bottom: 30px;
         margin-top: 50px;
+        transition: 0.4s;
+        &:hover{
+            transform: translateY(-10px);
+        }
 
         &_img {
             border-radius: 0px 25px 25px 0px;

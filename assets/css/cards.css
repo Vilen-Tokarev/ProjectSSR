@@ -300,6 +300,20 @@ a {
   display: flex;
   justify-content: space-between;
 }
+.main__back-btn {
+  float: right;
+  padding: 39px 35px;
+}
+.main__back-btn_a {
+  transition: 0.3s;
+  font-size: 18px;
+  color: rgba(24, 24, 24, 0.6784313725);
+  border-bottom: 1px solid;
+  opacity: 0.7;
+}
+.main__back-btn_a:hover {
+  opacity: 1;
+}
 
 .footer {
   height: 416px;

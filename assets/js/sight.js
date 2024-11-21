@@ -60,17 +60,10 @@ function displayUsers(page, filteredUsers = allUsers) {
         title.textContent = user.title;
         wrap.appendChild(title);
         
-        let textCard = document.createElement('p');
-
         let text = document.createElement('p');
         text.textContent = user.text;
         text.classList.add("main__card1_textWrap_text");
         wrap.appendChild(text);
-
-        let image2 = document.createElement('img');
-        image2.src = user.img2;
-        image2.alt = user.title;
-        image2.classList.add("main__card1_img");
 
         let image = document.createElement('img');
         image.src = user.img;

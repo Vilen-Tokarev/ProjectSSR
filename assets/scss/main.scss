@@ -171,7 +171,7 @@ a {
             width: 80px;
             height: 25px;
             float: right;
-            z-index: 1000;
+            z-index: 4;
 
             @media (max-width:426px) {
                 display: block;
@@ -300,6 +300,7 @@ a {
 
         &_gallery {
 
+           
             display: flex;
             gap: 16px;
 
@@ -308,6 +309,12 @@ a {
                 transition: 0.3s;
                 cursor: pointer;
             }
+            @media (max-width: 426px) {
+                :hover {
+                    opacity: 1;
+                }
+            }
+
         }
     }
 

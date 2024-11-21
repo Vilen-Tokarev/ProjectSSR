@@ -335,6 +335,22 @@ a {
         display: flex;
         justify-content: space-between;
     }
+    &__back-btn{
+        
+        float: right;
+        padding: 39px 35px;
+        &_a{
+            transition: 0.3s;
+            font-size: 18px;
+            color: #181818ad;
+            border-bottom: 1px solid;
+            opacity: 0.7;
+            &:hover{
+                opacity: 1;
+            }
+        }
+
+    }
 }
 .footer {
     @media(max-width: 426px) {
