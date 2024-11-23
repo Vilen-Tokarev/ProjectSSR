@@ -42,7 +42,7 @@ const card = document.getElementById('userDetails');
             let image2 = document.createElement('img');
             image2.src = selectedUser.img2;
             image2.alt = selectedUser.title;
-            image2.classList.add("main__card1_img");
+            image2.classList.add("main__card1_img2");
             imgWrap.appendChild(image2);
     
             let mapWrap = document.createElement('div');

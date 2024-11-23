@@ -255,6 +255,22 @@ a {
   width: 641px;
   height: 480px;
 }
+@media (max-width: 426px) {
+  .main__card1_img {
+    width: 100%;
+    height: 100%;
+  }
+}
+.main__card1_img2 {
+  width: 641px;
+  height: 480px;
+}
+@media (max-width: 426px) {
+  .main__card1_img2 {
+    width: 100%;
+    height: 100%;
+  }
+}
 .main__card1_textWrap {
   padding: 35px;
 }
@@ -272,6 +288,12 @@ a {
   border-bottom: 2px solid #1E2B4E;
   padding-bottom: 7px;
 }
+@media (max-width: 426px) {
+  .main__card1_textWrap_title {
+    font-size: 16px;
+    padding: 10px;
+  }
+}
 .main__card1_textWrap_text {
   margin-top: 55px;
   font-size: 16px;
@@ -287,6 +309,7 @@ a {
     margin: 0 auto;
     text-align: center;
     margin-top: 30px;
+    font-size: 12px;
   }
 }
 .main__mapWrap {
@@ -295,10 +318,22 @@ a {
   padding-bottom: 50px;
   padding-top: 50px;
 }
+@media (max-width: 426px) {
+  .main__mapWrap {
+    padding-bottom: 0;
+  }
+}
 .main__imgWrap {
   width: 100%;
   display: flex;
   justify-content: space-between;
+}
+@media (max-width: 426px) {
+  .main__imgWrap {
+    display: grid;
+    grid-template-columns: 1fr;
+    height: 100%;
+  }
 }
 .main__back-btn {
   float: right;
@@ -313,6 +348,16 @@ a {
 }
 .main__back-btn_a:hover {
   opacity: 1;
+}
+@media (max-width: 426px) {
+  .main__back-btn_a {
+    font-size: 16px;
+  }
+}
+@media (max-width: 426px) {
+  .main__back-btn {
+    padding: 19px 15px;
+  }
 }
 
 .footer {
