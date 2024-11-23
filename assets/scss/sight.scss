@@ -106,6 +106,9 @@ body {
     @media(max-width: 426px) {
         width: 400px;
     }
+    @media (max-width:376px) {
+        width: 360px;   
+    }
 }
 
 li {
