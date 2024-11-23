@@ -6,16 +6,19 @@ let totalPages = 0;
 allUsers = [];
 
 // Loader
-window.onload = function () {
-    let preloader = document.getElementById('loader');
-    let bg = document.getElementById("loading")
-    preloader.classList.add('hide-loader');
-    bg.classList.add('hide-loader');
-    setInterval(function () {
-        preloader.classList.add('loader-hidden');
-        bg.classList.add('loader-hidden');
-    }, 2500);
+function load(){
+    window.onload = function () {
+        let preloader = document.getElementById('loader');
+        let bg = document.getElementById("loading")
+        preloader.classList.add('hide-loader');
+        bg.classList.add('hide-loader');
+        setInterval(function () {
+            preloader.classList.add('loader-hidden');
+            bg.classList.add('loader-hidden');
+        }, 2500);
+    }
 }
+load();
 
 // Получение 'user' из api
 async function fetchUsers() {
@@ -99,14 +102,14 @@ document.getElementById('prevPage').addEventListener('click', () => {
     if (currentPage > 1) {
         updatePage(currentPage - 1);
     }
+    
 });
 
 document.getElementById('nextPage').addEventListener('click', () => {
     if (currentPage < totalPages) {
-        updatePage(currentPage + 1);
+        updatePage(currentPage + 1);  
     }
 });
-
 fetchUsers();
 
 

@@ -72,7 +72,37 @@
                     <a href="./sight.html" class="main__back-btn_a">Назад</a>
                 </div>
             </div>
-            
+            <button id="open-modal-btn" class="main__box_contact_btn_text">
+                Оставить отзыв
+            </button>
+            <section id="modal" class="modal">
+
+                <div class="modal__box">
+                    <button class="modal__box_close" id="close-modal-btn">
+                        <img src="./assets/img-contact/X.png" alt="img">
+                    </button>
+                    <p class="modal__box_title">
+                        Форма
+                    </p>
+                    <div class="modal__box_input">
+                        <input class="modal__box_input_login" type="login" id="login"
+                            placeholder="Как к вам обращаться">
+                        <input class="modal__box_input_rare" type="text" id="rare" placeholder="Оценка 1-10">
+                        <textarea class="modal__box_input_text" name="" id="message" cols="80" rows="10"
+                            placeholder="Отзыв"></textarea>
+
+                    </div>
+                    <nav class="modal__box_btn">
+                        <button id="send-modal-btn" class="modal__box_btn_text">Отправить</button>
+                    </nav>
+                </div>
+
+            </section>
+            <section class="reviews">
+                <div class="container">
+                    <div class="reviews__wrap" id="rewWrap"></div>
+                </div>
+            </section>
             <script src="./assets/js/cards.js"></script>
         </div>
     </section>
