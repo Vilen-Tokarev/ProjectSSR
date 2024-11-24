@@ -404,6 +404,20 @@ a {
   border-radius: 10px;
   gap: 20px;
 }
+.reviews_wrapBox {
+  min-width: 350px;
+  max-width: 350px;
+}
+@media (max-width: 426px) {
+  .reviews_wrapBox {
+    width: 150px;
+  }
+}
+@media (max-width: 376px) {
+  .reviews_wrapBox {
+    width: 120px;
+  }
+}
 .reviews_box {
   width: 100%;
   height: 100%;
@@ -415,14 +429,27 @@ a {
   margin-bottom: 20px;
 }
 .reviews_login {
+  color: #1E2B4E;
+  font-family: "Rubik Mono One";
   margin-bottom: 10px;
   font-size: 20px;
   font-weight: 600;
 }
 .reviews_rare {
+  color: #1E2B4E;
+  font-family: "Rubik Mono One";
   margin-bottom: 10px;
   font-size: 20px;
   font-weight: 600;
+}
+.reviews_sight {
+  color: rgba(30, 43, 78, 0.6117647059);
+  font-family: "Rubik Mono One";
+}
+.reviews_text {
+  color: #1E2B4E;
+  font-family: "Rubik Mono One";
+  font-size: 14px;
 }
 
 .footer {

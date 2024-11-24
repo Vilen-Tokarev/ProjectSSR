@@ -85,7 +85,7 @@ document.getElementById("close-modal-btn").addEventListener("click", function ()
     document.getElementById("modal").classList.remove("open")
 })
 
-// Сохранение в Local storage
+// Отзывы
 document.getElementById("send-modal-btn").addEventListener("click", function () {
     const rareInput = document.querySelector(".modal__box_input_rare");
     const loginInput = document.querySelector(".modal__box_input_login");
@@ -103,7 +103,7 @@ document.getElementById("send-modal-btn").addEventListener("click", function () 
         return;
     }
     if (isNaN(rareInput.value)) {
-        alert("Значение редкости должно быть числом");
+        alert("Значение оценки должно быть числом");
         return;
     }
 
@@ -135,16 +135,16 @@ function reviews() {
         box.classList.add('reviews_box');
 
         let wrapBox = document.createElement('div');
-        box.classList.add('reviews_wrapBox');
+        wrapBox.classList.add('reviews_wrapBox');
         let wrapBox2 = document.createElement('div');
-        box.classList.add('reviews_wrapBox2');
+        wrapBox2.classList.add('reviews_wrapBox2');
 
         let login = document.createElement('p');
         login.textContent = review.login;
         login.classList.add('reviews_login'); 
 
         let rare = document.createElement('p');
-        rare.textContent = review.rare;
+        rare.textContent =  'Оценка: ' + review.rare + '/10';
         rare.classList.add('reviews_rare');
         
         let sight = document.createElement('p');
@@ -152,14 +152,15 @@ function reviews() {
         sight.classList.add('reviews_sight'); 
 
         let text = document.createElement('p');
-        text.textContent = review.text;
+        text.textContent = 'Отзыв: ' + review.text;
         text.classList.add('reviews_text'); 
 
         wrapBox.appendChild(login);
         wrapBox.appendChild(sight);
-        box.appendChild(wrapBox);
         wrapBox2.appendChild(rare);
         wrapBox2.appendChild(text);
+
+        box.appendChild(wrapBox);
         box.appendChild(wrapBox2);
         
         rewWrap.appendChild(box);

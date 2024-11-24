@@ -453,6 +453,16 @@ a {
         border-radius: 10px;
         gap: 20px;
     }
+    &_wrapBox{
+        min-width: 350px;
+        max-width: 350px;
+        @media(max-width: 426px){
+            width: 150px;
+        }
+        @media(max-width: 376px){
+            width: 120px;
+        }
+    }
 
     &_box {
         width: 100%;
@@ -466,15 +476,28 @@ a {
     }
 
     &_login {
+        color: #1E2B4E;
+        font-family: "Rubik Mono One";
         margin-bottom: 10px;
         font-size: 20px;
         font-weight: 600;
     }
 
     &_rare {
+        color: #1E2B4E;
+        font-family: "Rubik Mono One";
         margin-bottom: 10px;
         font-size: 20px;
         font-weight: 600;
+    }
+    &_sight{
+        color: #1e2b4e9c;
+        font-family: "Rubik Mono One";
+    }
+    &_text{
+        color: #1E2B4E;
+        font-family: "Rubik Mono One";
+        font-size: 14px;
     }
 }
 
