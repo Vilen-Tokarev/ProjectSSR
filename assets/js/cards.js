@@ -3,7 +3,7 @@ window.onload = function () {
     let bg = document.getElementById("loading")
     preloader.classList.add('hide-loader');
     bg.classList.add('hide-loader');
-    setInterval(function () {
+    setTimeout(function () {
         preloader.classList.add('loader-hidden');
         bg.classList.add('loader-hidden');
     }, 2500);
@@ -95,7 +95,7 @@ document.getElementById("send-modal-btn").addEventListener("click", function () 
         rare: rareInput.value,
         login: loginInput.value,
         text: textInput.value,
-        sight: selectedUser.title 
+        sight: selectedUser.title
     };
 
     if (rareInput.value > 10 || !rareInput.value || !loginInput.value || !textInput.value) {
@@ -121,7 +121,7 @@ document.getElementById("send-modal-btn").addEventListener("click", function () 
 
     document.getElementById("modal").classList.remove("open");
 
-    reviews(); 
+    reviews();
 });
 
 function reviews() {

@@ -4,7 +4,7 @@ window.onload = function () {
     let bg = document.getElementById("loading")
     preloader.classList.add('hide-loader');
     bg.classList.add('hide-loader');
-    setInterval(function () {
+    setTimeout(function () {
         preloader.classList.add('loader-hidden');
         bg.classList.add('loader-hidden');
     }, 2500);

@@ -12,7 +12,7 @@ function load(){
         let bg = document.getElementById("loading")
         preloader.classList.add('hide-loader');
         bg.classList.add('hide-loader');
-        setInterval(function () {
+        setTimeout(function () {
             preloader.classList.add('loader-hidden');
             bg.classList.add('loader-hidden');
         }, 2500);
@@ -20,7 +20,7 @@ function load(){
 }
 load();
 
-// Получение 'user' из api
+// Получение всех 'user' из api
 async function fetchUsers() {
     try {
         const response = await fetch(apiUrl);
@@ -39,7 +39,7 @@ function displayUsers(page, filteredUsers = allUsers) {
     const userList = document.getElementById('userList');
     userList.innerHTML = '';
 
-    const startIndex = (page - 1) * itemsPerPage; 
+    const startIndex = (page - 1) * itemsPerPage;
     const endIndex = startIndex + itemsPerPage;
     const userToDisplay = filteredUsers.slice(startIndex, endIndex);
 
