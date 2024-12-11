@@ -1,226 +1,215 @@
-const apiUrl = 'https://672caf7e1600dda5a9f97a34.mockapi.io/user';
-let currentPage = 1;
-const itemsPerPage = 3; // Количество элементов на странице
-let totalItems = 0; // Общее количество элементов
-let totalPages = 0;
-allUsers = [];
-
 // Loader
-function load(){
-    window.onload = function () {
-        let preloader = document.getElementById('loader');
-        let bg = document.getElementById("loading")
-        preloader.classList.add('hide-loader');
-        bg.classList.add('hide-loader');
-        setTimeout(function () {
-            preloader.classList.add('loader-hidden');
-            bg.classList.add('loader-hidden');
-        }, 2500);
-    }
+function load() {
+  window.onload = function () {
+    let preloader = document.getElementById("loader");
+    let bg = document.getElementById("loading");
+    preloader.classList.add("hide-loader");
+    bg.classList.add("hide-loader");
+    setTimeout(function () {
+      preloader.classList.add("loader-hidden");
+      bg.classList.add("loader-hidden");
+    }, 2500);
+  };
 }
 load();
 
-// Получение всех 'user' из api
-async function fetchUsers() {
+class UserManage {
+  constructor(
+    apiUrl,
+    itemsPerPage
+  ) {
+    this.apiUrl = apiUrl;
+    this.currentPage = 1;
+    this.itemsPerPage = itemsPerPage;
+    this.currentPage = 1;
+    this.totalItems = 0;
+    this.totalPages = 0;
+    this.allUsers = [];
+  }
+
+  async fetchUsers() {
     try {
-        const response = await fetch(apiUrl);
-        allUsers = await response.json();
-        totalItems = allUsers.length;
-        totalPages = Math.ceil(totalItems / itemsPerPage);
-        displayUsers(currentPage);
-        updateButtons();
+      const response = await fetch(this.apiUrl);
+      this.allUsers = await response.json();
+      this.totalItems = this.allUsers.length;
+      this.totalPages = Math.ceil(this.totalItems / this.itemsPerPage);
+      this.displayUsers(this.currentPage);
+      this.updateButtons();
     } catch (error) {
-        console.error('Ошибка получения данных', error);
+      console.error("Ошибка получения данных", error);
     }
-}
+  }
 
-// Функция отображение карточек
-function displayUsers(page, filteredUsers = allUsers) {
-    const userList = document.getElementById('userList');
-    userList.innerHTML = '';
+  updatePage(page) {
+    this.currentPage = page;
+    this.displayUsers(this.currentPage);
+    document.getElementById("num").textContent = page;
+    this.updateButtons();
+  }
 
-    const startIndex = (page - 1) * itemsPerPage;
-    const endIndex = startIndex + itemsPerPage;
-    const userToDisplay = filteredUsers.slice(startIndex, endIndex);
+  updateButtons() {
+    document.getElementById("prevPage").disabled = this.currentPage === 1;
+    document.getElementById("nextPage").disabled =
+      this.currentPage === this.totalPages;
+  }
 
-    // html генерация
-    userToDisplay.forEach(user => {
+  displayUsers(page, filteredUsers = this.allUsers) {
+    const userList = document.getElementById("userList");
+    userList.innerHTML = "";
 
-        const a = document.createElement('a');
-        a.href = './cards.html';
-        a.dataset.user = JSON.stringify(user);
+    const startIndex = (page - 1) * this.itemsPerPage;
+    const endIndex = startIndex + this.itemsPerPage;
+    const usersToDisplay = filteredUsers.slice(startIndex, endIndex);
 
-        const li = document.createElement('li');
-        li.classList.add("main__card1")
-        const wrap = document.createElement('div');
-        wrap.classList.add("main__card1_textWrap");
-
-        a.appendChild(li);
-        li.appendChild(wrap);
-
-        let title = document.createElement('p');
-        title.classList.add("main__card1_textWrap_title");
-        title.textContent = user.title;
-        wrap.appendChild(title);
-        
-        let text = document.createElement('p');
-        text.textContent = user.text;
-        text.classList.add("main__card1_textWrap_text");
-        wrap.appendChild(text);
-
-        let image = document.createElement('img');
-        image.src = user.img;
-        image.alt = user.title;
-        image.classList.add("main__card1_img");
-        li.appendChild(image);
-
-        userList.appendChild(a);
+    usersToDisplay.forEach((user) => {
+      const card = new UserCard(user);
+      userList.appendChild(card.render());
     });
 
-    userList.querySelectorAll('a').forEach(a => {
-        a.addEventListener('click', function () {
-            localStorage.setItem('selectedUser', a.dataset.user);
-        })
-    })
-}
+    userList.querySelectorAll("a").forEach((a) => {
+      a.addEventListener("click", function (event) {
+        event.preventDefault();
+        const userData = JSON.parse(a.dataset.user);
+        const userID = userData.id;
+        const url = `cards.html?id=${userID}`;
 
+        window.location.href = url;
+      });
+    });
+  }
 
-// Пагинация
-function updatePage(page) {
-    currentPage = page;
-    displayUsers(currentPage);
-    document.getElementById('num').textContent = page;
-    updateButtons();
-}
-
-function updateButtons() {
-    document.getElementById('prevPage').disabled = currentPage === 1;
-    document.getElementById('nextPage').disabled = currentPage === totalPages;
-}
-
-document.getElementById('prevPage').addEventListener('click', () => {
-    if (currentPage > 1) {
-        updatePage(currentPage - 1);
-    }
-    
-});
-
-document.getElementById('nextPage').addEventListener('click', () => {
-    if (currentPage < totalPages) {
-        updatePage(currentPage + 1);  
-    }
-});
-fetchUsers();
-
-
-
-// Поиск
-
-// Обработка кнопки поиска
-document.getElementById('searchButton').addEventListener('click', () => {
-    const searchQuery = document.getElementById('searchInput').value;
-    if (searchQuery) {
-        searchUsers(searchQuery)
-    } else {
-        alert('Вы ничего не ввели')
-    }
-});
-
-// Запрос на сервер и проверка состояния ответа
-function searchUsers(query) {
-    const url = new URL('https://672caf7e1600dda5a9f97a34.mockapi.io/user');
-    url.searchParams.append('title', query); 
+  searchUsers(query) {
+    const url = new URL(this.apiUrl);
+    url.searchParams.append("title", query);
 
     fetch(url, {
-        method: 'GET',
-        headers: { 'content-type': 'application/json' },
+      method: "GET",
+      headers: { "content-type": "application/json" },
     })
-        .then(res => {
-            if (res.ok) {
-                return res.json();
-            }
-            throw new Error('Сетевой ответ был не ok.');
-        })
-        .then(tasks => {
-            displayResults(tasks);
-        })
-        .catch(error => {
-            console.error('Ошибка:', error);
-            alert('Произошла ошибка при выполнении запроса.');
-        });
-}
-// Вывод карточек по поиску
-function displayResults(tasks) {
-    const resultsContainer = document.getElementById('resultsContainer');
-    resultsContainer.innerHTML = '';
+      .then((res) => {
+        if (res.ok) {
+          return res.json();
+        }
+        throw new Error("Сетевой ответ был не ok.");
+      })
+      .then((tasks) => {
+        this.displayResults(tasks);
+      })
+      .catch((error) => {
+        console.error("Ошибка:", error);
+        alert("Произошла ошибка при выполнении запроса.");
+      });
+  }
+
+  displayResults(tasks) {
+    const resultsContainer = document.getElementById("resultsContainer");
+    resultsContainer.innerHTML = "";
 
     if (tasks.length === 0) {
-        resultsContainer.innerHTML = 'Ничего не найдено.';
-        return;
+      resultsContainer.innerHTML = "Ничего не найдено.";
+      return;
     }
 
-    tasks.forEach(task => {
-        const a = document.createElement('a');
-        a.href = './cards.html';
-
-        const li = document.createElement('li');
-        li.classList.add("main__card1")
-        const wrap = document.createElement('div');
-        wrap.classList.add("main__card1_textWrap");
-
-        a.appendChild(li);
-        li.appendChild(wrap);
-
-        const title = document.createElement('p');
-        title.textContent = task.title;
-        title.classList.add('main__card1_textWrap_title')
-        wrap.appendChild(title);
-
-        const text = document.createElement('p');
-        text.textContent = task.text;
-        text.classList.add('main__card1_textWrap_text');
-        wrap.appendChild(text);
-
-        
-        const image = document.createElement('img');
-        image.src = task.img;
-        image.alt = task.title;
-        image.classList.add("main__card1_img");
-        li.appendChild(image);
-
-        resultsContainer.appendChild(a);
+    tasks.forEach((task) => {
+      const card = new UserCard(task);
+      resultsContainer.appendChild(card.render());
     });
+  }
+
+  applyFilters(category) {
+    const filteredUsers = this.allUsers.filter((user) => {
+      return category === "all" || user.category === category;
+    });
+
+    this.displayUsers(this.currentPage, filteredUsers);
+  }
 }
 
-// Фильтер 
-document.addEventListener('DOMContentLoaded', function () {
-    const filterSelect = document.querySelector('.search__filter-buttons');
+class UserCard {
+  constructor(user) {
+    this.user = user;
+  }
 
-    filterSelect.addEventListener('change', function () {
-        const category = this.value;
-        applyFilters(category);
-    });
+  render() {
+    const a = document.createElement("a");
+    a.href = "./cards.html";
+    a.dataset.user = JSON.stringify(this.user);
 
-    function applyFilters(category) {
-        const filteredUsers = allUsers.filter(user => {
-            return category === 'all' || user.category === category;
-        });
+    const li = document.createElement("li");
+    li.classList.add("main__card1");
+    const wrap = document.createElement("div");
+    wrap.classList.add("main__card1_textWrap");
 
-        displayUsers(currentPage, filteredUsers);
-    }
+    a.appendChild(li);
+    li.appendChild(wrap);
+
+    const title = document.createElement("p");
+    title.classList.add("main__card1_textWrap_title");
+    title.textContent = this.user.title;
+    wrap.appendChild(title);
+
+    const text = document.createElement("p");
+    text.textContent = this.user.text;
+    text.classList.add("main__card1_textWrap_text");
+    wrap.appendChild(text);
+
+    const image = document.createElement("img");
+    image.src = this.user.img;
+    image.alt = this.user.title;
+    image.classList.add("main__card1_img");
+    li.appendChild(image);
+
+    return a;
+  }
+}
+
+const apiUrl = "https://672caf7e1600dda5a9f97a34.mockapi.io/user";
+const itemsPerPage = 3;
+const userManager = new UserManage(apiUrl, itemsPerPage);
+
+userManager.fetchUsers();
+
+document.getElementById("prevPage").addEventListener("click", () => {
+  if (userManager.currentPage > 1) {
+    userManager.updatePage(userManager.currentPage - 1);
+  }
 });
 
+document.getElementById("nextPage").addEventListener("click", () => {
+  if (userManager.currentPage < userManager.totalPages) {
+    userManager.updatePage(userManager.currentPage + 1);
+  }
+});
+
+document.getElementById("searchButton").addEventListener("click", () => {
+  const searchQuery = document.getElementById("searchInput").value;
+  if (searchQuery) {
+    userManager.searchUsers(searchQuery);
+  } else {
+    alert("Вы ничего не ввели");
+  }
+});
+
+// Фильтер
+document.addEventListener("DOMContentLoaded", function () {
+  const filterSelect = document.querySelector(".search__filter-buttons");
+
+  filterSelect.addEventListener("change", function () {
+    const category = this.value;
+    userManager.applyFilters(category);
+  });
+});
 
 // Burger
-document.getElementById('burgerIcon').addEventListener('click', function () {
-    const menuItems = document.getElementById('menuItems');
-    const burgerIcon = document.getElementById('burgerIcon');
+document.getElementById("burgerIcon").addEventListener("click", function () {
+  const menuItems = document.getElementById("menuItems");
+  const burgerIcon = document.getElementById("burgerIcon");
 
-    if (menuItems.classList.contains('open')) {
-        menuItems.classList.remove('open');
-        burgerIcon.classList.remove('open');
-    } else {
-        menuItems.classList.add('open');
-        burgerIcon.classList.add('open');
-    }
+  if (menuItems.classList.contains("open")) {
+    menuItems.classList.remove("open");
+    burgerIcon.classList.remove("open");
+  } else {
+    menuItems.classList.add("open");
+    burgerIcon.classList.add("open");
+  }
 });
