@@ -13,6 +13,7 @@ const urlParams = new URLSearchParams(window.location.search);
 const userId = urlParams.get('id');
 const apiUrl = `https://672caf7e1600dda5a9f97a34.mockapi.io/user/${userId}`;
 
+  
 class displayUser {
   constructor(apiUrl) {
     this.apiUrl = apiUrl;
@@ -90,9 +91,6 @@ class displayUser {
 
 const userDisplay = new displayUser(apiUrl);
 userDisplay.fetchUser();
-
-
-
 
 
 

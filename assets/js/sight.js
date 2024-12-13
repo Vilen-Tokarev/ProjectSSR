@@ -21,7 +21,6 @@ class UserManage {
     this.apiUrl = apiUrl;
     this.currentPage = 1;
     this.itemsPerPage = itemsPerPage;
-    this.currentPage = 1;
     this.totalItems = 0;
     this.totalPages = 0;
     this.allUsers = [];
@@ -71,7 +70,7 @@ class UserManage {
         event.preventDefault();
         const userData = JSON.parse(a.dataset.user);
         const userID = userData.id;
-        const url = `cards.html?id=${userID}`;
+        const url = `/cards.html?id=${userID}`;
 
         window.location.href = url;
       });
